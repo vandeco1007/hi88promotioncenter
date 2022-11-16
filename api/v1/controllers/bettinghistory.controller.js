@@ -99,9 +99,8 @@ module.exports = {
         }else{
           failure(res,200,"Quý khách đã nhận khuyến mãi này")
         }
-      })
-      .catch(function (error) {
-        console.log(error);
+      }).catch(function (error) {
+        res.json(error);
       });
     }  
 }
