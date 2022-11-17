@@ -73,7 +73,7 @@ module.exports = {
                     let limitResult = limit(result)
                     if(score!=''){
                       if(score<=limitResult-1){
-                        success(res,result,score,promoInfo,calculateValue)
+                        success(res,result,score,promoInfo,calculateValue,startTime,endTime)
                       }else{
                         score = limitResult
                         success(res,result,score,promoInfo,calculateValue)
@@ -105,7 +105,7 @@ module.exports = {
     }  
 }
 
-function success(res,result,score,promoInfo,calculateValue){
+function success(res,result,score,promoInfo,calculateValue,startTime,endTime){
   res.json({
     promoName: promoInfo.promoName,
     promotionTile: promoInfo.promotionTile,
@@ -114,8 +114,8 @@ function success(res,result,score,promoInfo,calculateValue){
     bonus: score,
     subject: promoInfo.subject,
     content: promoInfo.content,
-    startTime:promoInfo.startTime,
-    endTime:promoInfo.endTime
+    startTime:startTime,
+    endTime:endTime
   })
 }
 
