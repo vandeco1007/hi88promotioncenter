@@ -113,7 +113,9 @@ function success(res,result,score,promoInfo,calculateValue){
     score: calculateValue,
     bonus: score,
     subject: promoInfo.subject,
-    content: promoInfo.content
+    content: promoInfo.content,
+    startTime:promoInfo.startTime,
+    endTime:promoInfo.endTime
   })
 }
 
