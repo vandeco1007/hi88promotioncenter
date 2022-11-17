@@ -82,13 +82,13 @@ module.exports = {
                       document.getElementsByClassName('results-area')[0].innerHTML='<h3 style="width:100%;text-align: center;">Vui Lòng chờ Đến ngày 8/18/28 Để Nhận Thưởng</h3>'
                     }
                   }else{
-  
+                    failure(res,200,'Vé cược không hợp lệ')
                   }
                 }else{
-                  console.log('Quý Khách Đã Nhận Khuyến Mãi Này')
+                  failure(res,200,'Vé cược không hợp lệ')
                 }
               }else{
-                console.log('Vui Lòng chờ đến thời gian nhận thưởng')
+                failure(res,200,'Vé cược không hợp lệ')
               }
             }else{
               failure(res,200,'Vé cược không hợp lệ')
