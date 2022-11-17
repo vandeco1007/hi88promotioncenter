@@ -73,10 +73,10 @@ module.exports = {
                     let limitResult = limit(result)
                     if(score!=''){
                       if(score<=limitResult-1){
-                        success(res,result,score,promoInfo)
+                        success(res,result,score,promoInfo,calculateValue)
                       }else{
                         score = limitResult
-                        success(res,result,score,promoInfo)
+                        success(res,result,score,promoInfo,calculateValue)
                       }
                     }else{
                       document.getElementsByClassName('results-area')[0].innerHTML='<h3 style="width:100%;text-align: center;">Vui Lòng chờ Đến ngày 8/18/28 Để Nhận Thưởng</h3>'
@@ -105,11 +105,13 @@ module.exports = {
     }  
 }
 
-function success(res,result,score,promoInfo){
+function success(res,result,score,promoInfo,calculateValue){
   res.json({
     promoName: promoInfo.promoName,
+    promotionTile: promoInfo.promotionTile,
     playerid: result.data[0].playerid,
-    score: score,
+    score: calculateValue,
+    bonus: score,
     subject: promoInfo.subject,
     content: promoInfo.content
   })
