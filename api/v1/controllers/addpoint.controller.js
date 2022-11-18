@@ -8,14 +8,14 @@ module.exports = {
         "manualAdjustments": [
           {
             "playerid": body.user,
-            "adjustamt": "1",
-            "turnovervalue": "1",
+            "adjustamt": body.adjustment,
+            "turnovervalue": body.turnover,
             "removegwc": false,
             "servicefee": "0",
             "adminfeeratio": "0",
             "turnovertype": "0",
-            "ecremarks": "2",
-            "remarks": "1",
+            "ecremarks": body.ecremark,
+            "remarks": body.remark,
             "reasontype": "2",
             "manualtype": "1",
             "walletid": "MAIN"
@@ -24,8 +24,8 @@ module.exports = {
         "sendmessage": true,
         "messages": {
           "msgtype": "2",
-          "subject": "3",
-          "content": "<p>4</p>",
+          "subject": body.subject,
+          "content": body.content,
           "players": body.user
         }
       };

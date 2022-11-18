@@ -112,6 +112,7 @@ function success(res,result,score,promoInfo,calculateValue,startTime,endTime){
     playerid: result.data[0].playerid,
     score: calculateValue,
     bonus: score,
+    turnover:promoInfo.turnovervalue,
     subject: promoInfo.subject,
     content: promoInfo.content,
     startTime:startTime,
@@ -126,4 +127,4 @@ function failure(res,code,reason){
   })
 }
 
-//
+//12
