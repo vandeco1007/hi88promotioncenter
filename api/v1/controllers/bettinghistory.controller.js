@@ -82,16 +82,16 @@ module.exports = {
                       document.getElementsByClassName('results-area')[0].innerHTML='<h3 style="width:100%;text-align: center;">Vui Lòng chờ Đến ngày 8/18/28 Để Nhận Thưởng</h3>'
                     }
                   }else{
-                    failure(res,200,'Vé cược không hợp lệ')
+                    failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
                   }
                 }else{
-                  failure(res,200,'Vé cược không hợp lệ')
+                  failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
                 }
               }else{
-                failure(res,200,'Vé cược không hợp lệ')
+                failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
               }
             }else{
-              failure(res,200,'Vé cược không hợp lệ')
+              failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
             }
           }else{
             failure(res,200,"Quý khách chưa đủ điều kiện nhận khuyên mãi")

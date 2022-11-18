@@ -6,8 +6,8 @@ var year = new Date().getFullYear()
 for(let i=1;i<=31;i++){
     allDate.push(i)
 }
-var currentStartDay= new Date(month+"-"+date+"-"+year).getTime()
-var currentEndDay= (new Date(month+"-"+date+"-"+year).getTime())+86399999
+var currentStartDay= (new Date(month+"-"+date+"-"+year).getTime())+3600000
+var currentEndDay= currentStartDay+86399999
 var currentStartDayOfMonth= (new Date(year,month-1,1).getTime())
 var currentEndDayOfMonth= (new Date(year,month,0).getTime()+86399999)
 var previosdateStart= (currentStartDay-86400000)
