@@ -73,13 +73,13 @@ module.exports = {
                     let limitResult = limit(result)
                     if(score!=''){
                       if(score<=limitResult-1){
-                        success(res,result,score,promoInfo,calculateValue,startTime,endTime)
+                        success(res,result,score,promoInfo,calculateValue,startTime,endTime,url)
                       }else{
                         score = limitResult
-                        success(res,result,score,promoInfo,calculateValue)
+                        success(res,result,score,promoInfo,calculateValue,url)
                       }
                     }else{
-                      document.getElementsByClassName('results-area')[0].innerHTML='<h3 style="width:100%;text-align: center;">Vui Lòng chờ Đến ngày 8/18/28 Để Nhận Thưởng</h3>'
+                      res.send(url)
                     }
                   }else{
                     failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
@@ -105,7 +105,7 @@ module.exports = {
     }  
 }
 
-function success(res,result,score,promoInfo,calculateValue,startTime,endTime){
+function success(res,result,score,promoInfo,calculateValue,startTime,endTime,url){
   res.json({
     promoName: promoInfo.promoName,
     promotionTile: promoInfo.promotionTile,
@@ -116,7 +116,8 @@ function success(res,result,score,promoInfo,calculateValue,startTime,endTime){
     subject: promoInfo.subject,
     content: promoInfo.content,
     startTime:startTime,
-    endTime:endTime
+    endTime:endTime,
+    url:url
   })
 }
 
