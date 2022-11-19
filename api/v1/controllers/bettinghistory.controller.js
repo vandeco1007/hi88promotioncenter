@@ -67,19 +67,20 @@ module.exports = {
                     let calculateMethod = eval(promoInfo.calculateMethod)
                     let score = Math.round(calculateMethod * 100) / 100
                     console.log("this is the score: "+score)
-                    console.log(result.data[0].gamename['id-ID'])
                     let limit
                     eval(promoInfo.limit)
                     let limitResult = limit(result)
                     if(score!=''){
                       if(score<=limitResult-1){
-                        success(res,result,score,promoInfo,calculateValue,startTime,endTime,url)
+                        console.log("final score: "+score)
+                        success(res,result,score,promoInfo,calculateValue,startTime,endTime)
                       }else{
                         score = limitResult
-                        success(res,result,score,promoInfo,calculateValue,url)
+                        console.log("final score: "+score)
+                        success(res,result,score,promoInfo,calculateValue,startTime,endTime)
                       }
                     }else{
-                      res.send(url)
+
                     }
                   }else{
                     failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
@@ -105,7 +106,7 @@ module.exports = {
     }  
 }
 
-function success(res,result,score,promoInfo,calculateValue,startTime,endTime,url){
+function success(res,result,score,promoInfo,calculateValue,startTime,endTime){
   res.json({
     promoName: promoInfo.promoName,
     promotionTile: promoInfo.promotionTile,
@@ -116,8 +117,7 @@ function success(res,result,score,promoInfo,calculateValue,startTime,endTime,url
     subject: promoInfo.subject,
     content: promoInfo.content,
     startTime:startTime,
-    endTime:endTime,
-    url:url
+    endTime:endTime
   })
 }
 
