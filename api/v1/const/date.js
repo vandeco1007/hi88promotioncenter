@@ -44,36 +44,3 @@ const dateValue = {
 
 module.exports = dateValue
 
-
-
-
-// api.jun31.com/playerreport?&dateFrom=2022-10-07&dateTo=2022-10-07&enddate=1665158399999&sortcolumn=validbet&startdate=1665072000000&playerid=0972941715
-// api.jun31.com/playerreport?&dateFrom=2022-10-7&dateTo=2022-10-7&startdate=1665072000000&enddate=1665158399999&sortcolumn=validbet&playerid=0972941715
-
-// let calculateValueFn = (result)=> {
-//     let winloss = Math.abs(result.summary.winloss)
-//     if(result.summary.validbet==0){
-//         if(winloss>0){
-//             console.log(winloss)
-//             if(result.summary.betamount<=winloss){
-//                 return result.summary.betamount
-//             }else if(result.summary.betamount>winloss){
-//                 return Math.abs(result.summary.winloss)
-//             }
-//         }else{
-//             return null
-//         }
-//     }else{
-//         if(result.summary.validbet>=300){
-//             if(result.summary.validbet<=winloss){
-//                 return result.summary.validbet
-//             }else if(result.summary.validbet>winloss){
-//                 return Math.abs(result.summary.betamount)
-//             }
-//         }else{
-//             return null
-//         }
-//     }
-// }
-
-// calculateValueFn(result)

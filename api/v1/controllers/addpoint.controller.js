@@ -48,10 +48,15 @@ module.exports = {
       
       axios(config)
       .then(function (response) {
-        res.send(response.data)
+        res.json({
+          code:200,
+          mess:"success"
+        })
       })
       .catch(function (error) {
-        console.log(error);
+        res.json({
+          error
+        })
       });
     }
 }
