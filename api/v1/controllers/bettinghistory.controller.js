@@ -29,6 +29,7 @@ module.exports = {
         +'&validbetinequality=1'
         +'&winlossinequality=1'
         +'&producttype='+producttype
+        +"zoneType=ASIA_SHANGHAI"
         +promoInfo.method+req.query.id,
         headers: { 
           'accept': ' */*', 
