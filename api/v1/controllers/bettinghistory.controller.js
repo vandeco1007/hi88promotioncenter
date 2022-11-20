@@ -80,7 +80,7 @@ module.exports = {
                         success(res,result,score,promoInfo,calculateValue,startTime,endTime)
                       }
                     }else{
-
+                      failure(res,200,"Quý khách chưa đủ điều kiện nhận khuyên mãi")
                     }
                   }else{
                     failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
