@@ -57,19 +57,23 @@ module.exports = {
               console.log(eval(promoInfo.avoidMethod))
               let validDate = promoInfo.date.indexOf(date.date)!=-1
               if(validDate==true){
-                let checkResult = [false]
                 if(checkResult[0]==false){
+                  let conditionValue = promoInfo.conditionValue
                   eval(promoInfo.condition)
-                  var condifunction = promoInfo.conditionValue.indexOf(finalize[0])
+                  console.log(finalize[0])
+                  var condifunction = conditionValue.indexOf(finalize[0])
                   console.log(condifunction)
                   if(condifunction!=-1){
                     let bonus = promoInfo.bonus[condifunction]
                     let calculateMethod = eval(promoInfo.calculateMethod)
                     let score = Math.round(calculateMethod * 100) / 100
+                    console.log(score)
                     console.log("this is the score: "+score)
                     let limit
                     eval(promoInfo.limit)
+                    console.log(limit)
                     let limitResult = limit(result)
+                    console.log(limitResult)
                     if(score!=''){
                       if(score<=limitResult-1){
                         console.log("final score: "+score)
