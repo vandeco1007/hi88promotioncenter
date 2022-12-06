@@ -3,7 +3,6 @@ const app = express()
 const cors = require('cors')
 const connectDb = require('./api/v1/config/database')
 const router= require("./api/v1/routers")
-const getPromo = require('./api/v1/middlewares/getPromo.middleware')
 
 app.use(cors())
 app.use(express.json())
