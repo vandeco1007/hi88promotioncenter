@@ -21,13 +21,7 @@ module.exports = {
         url: 'https://boapi.hi88admin.com/sandsv-ims/api/v1/reports/betting?'
         +'&starttime='+startTime
         +'&endtime='+endTime
-        +'&searchtime=resulttime'
-        +'&jpbetinequality=1'
-        +'&jpwininequality=1'
-        +'&stakeinequality=1'
-        +'&tipinequality=1'
-        +'&validbetinequality=1'
-        +'&winlossinequality=1'
+        +promoInfo.url
         +'&producttype='+producttype
         +"&zoneType=ASIA_SHANGHAI"
         +promoInfo.method+req.query.id,

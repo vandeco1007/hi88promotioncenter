@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const rule = mongoose.Schema({
+    url: String,
     promoName: {
         type:String,
         unique:true
