@@ -100,7 +100,18 @@ module.exports = {
           failure(res,200,"Quý khách đã nhận khuyến mãi này")
         }
       }).catch(function (error) {
-        res.json(error);
+        res.json({
+          promoName: promoInfo.promoName,
+          promotionTile: promoInfo.promotionTile,
+          playerid: "Quý khách chưa đủ điều kiện nhận khuyến mãi.",
+          score: 0,
+          bonus: 0,
+          turnover:0,
+          subject: "Bạn chưa đủ điều kiện để nhận khuyến mãi tại Hi88",
+          content: "Bạn chưa đủ điều kiện để nhận khuyến mãi tại Hi88",
+          startTime:startTime,
+          endTime:endTime
+        });
       });
     }  
 }
