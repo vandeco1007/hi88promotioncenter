@@ -4,6 +4,7 @@ const date = require('../const/date')
 const getPromo = require('../middlewares/getPromo.middleware')
 const asyncHandller = require('../middlewares/async.middleware')
 const manualadjust = require('../middlewares/manualadjust.middleware')
+const validplayer = require('../middlewares/validplayer.middleware')
 module.exports = {
     gethistory: async(req,res,next)=>{
       finalize = []
@@ -43,43 +44,49 @@ module.exports = {
         let checkResult = []
         await manualadjust(validateTimeStart,validateTimeEnd,promoInfo.remark,checkResult,result.data[0].playerid,authorization)
         console.log(checkResult[0])
-        if(checkResult[0]==false){
-          if(calculateValue!=null){
-            let avoidMethod = eval(promoInfo.avoidMethod)
-            console.log(avoidMethod)
-            console.log(promoInfo.avoidValue)
-            if(promoInfo.avoidValue.indexOf(avoidMethod)==-1){
-              console.log(eval(promoInfo.avoidMethod))
-              let validDate = promoInfo.date.indexOf(date.date)!=-1
-              if(validDate==true){
-                if(checkResult[0]==false){
-                  let conditionValue = promoInfo.conditionValue
-                  eval(promoInfo.condition)
-                  console.log(finalize[0])
-                  var condifunction = conditionValue.indexOf(finalize[0])
-                  console.log(condifunction)
-                  if(condifunction!=-1){
-                    let bonus = promoInfo.bonus[condifunction]
-                    let calculateMethod = eval(promoInfo.calculateMethod)
-                    let score = Math.round(calculateMethod * 100) / 100
-                    console.log(score)
-                    console.log("this is the score: "+score)
-                    let limit
-                    eval(promoInfo.limit)
-                    console.log(limit)
-                    let limitResult = limit(result)
-                    console.log(limitResult)
-                    if(score!=''){
-                      if(score<=limitResult-1){
-                        console.log("final score: "+score)
-                        success(res,result,score,promoInfo,calculateValue,startTime,endTime)
+        let valideplayerCheck = await validplayer(result.data[0].playerid,authorization)
+        console.log(valideplayerCheck)
+        if(valideplayerCheck=="valid"){
+          if(checkResult[0]==false){
+            if(calculateValue!=null){
+              let avoidMethod = eval(promoInfo.avoidMethod)
+              console.log(avoidMethod)
+              console.log(promoInfo.avoidValue)
+              if(promoInfo.avoidValue.indexOf(avoidMethod)==-1){
+                console.log(eval(promoInfo.avoidMethod))
+                let validDate = promoInfo.date.indexOf(date.date)!=-1
+                if(validDate==true){
+                  if(checkResult[0]==false){
+                    let conditionValue = promoInfo.conditionValue
+                    eval(promoInfo.condition)
+                    console.log(finalize[0])
+                    var condifunction = conditionValue.indexOf(finalize[0])
+                    console.log(condifunction)
+                    if(condifunction!=-1){
+                      let bonus = promoInfo.bonus[condifunction]
+                      let calculateMethod = eval(promoInfo.calculateMethod)
+                      let score = Math.round(calculateMethod * 100) / 100
+                      console.log(score)
+                      console.log("this is the score: "+score)
+                      let limit
+                      eval(promoInfo.limit)
+                      let limitResult = limit(result)
+                      console.log(limitResult)
+                      console.log("limit: "+limitResult)
+                      if(score!=''){
+                        if(score<=limitResult-1){
+                          console.log("final score: "+score)
+                          success(res,result,score,promoInfo,calculateValue,startTime,endTime)
+                        }else{
+                          score = limitResult
+                          console.log("final score: "+score)
+                          success(res,result,score,promoInfo,calculateValue,startTime,endTime)
+                        }
                       }else{
-                        score = limitResult
-                        console.log("final score: "+score)
-                        success(res,result,score,promoInfo,calculateValue,startTime,endTime)
+                        failure(res,200,"Quý khách chưa đủ điều kiện nhận khuyên mãi")
                       }
                     }else{
-                      failure(res,200,"Quý khách chưa đủ điều kiện nhận khuyên mãi")
+                      failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
                     }
                   }else{
                     failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
@@ -91,13 +98,13 @@ module.exports = {
                 failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
               }
             }else{
-              failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
+              failure(res,200,"Quý khách chưa đủ điều kiện nhận khuyên mãi")
             }
           }else{
-            failure(res,200,"Quý khách chưa đủ điều kiện nhận khuyên mãi")
+            failure(res,200,"Quý khách đã nhận khuyến mãi này")
           }
         }else{
-          failure(res,200,"Quý khách đã nhận khuyến mãi này")
+          failure(res,200,"Quý khách chưa đủ điều kiện nhận khuyên mãi")
         }
       }).catch(function (error) {
         res.json({
