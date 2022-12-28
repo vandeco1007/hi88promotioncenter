@@ -43,6 +43,7 @@ module.exports = {
         console.log(calculateValue)
         let checkResult = []
         await manualadjust(validateTimeStart,validateTimeEnd,promoInfo.remark,checkResult,result.data[0].playerid,authorization)
+        console.log(checkResult[0])
         let valideplayerCheck = await validplayer(result.data[0].playerid,authorization)
         console.log(valideplayerCheck)
         if(valideplayerCheck=="valid"){
