@@ -8,7 +8,7 @@ module.exports = (authorization)=>{
         'Cookie': '__cf_bm=Qbwh7OJek5iG6fYeZw1B_3gHvj3yK.7IEaSeWfOkFoY-1670508539-0-ATDCHdkFG2tPFqQujvDg9VDq9WXvjtXxdIe4jwTbX85Jc3avQjDL8QM7QYEiPJZES/KgwThrlUS8sAak7QfFDFg='
       }
     };
-    
+    console.log(config.url)
     return axios(config)
     .then(function (response) {
       if(response.data.vipid!="ee4c391a-49f1-481d-89c6-98bc508501e1"){
