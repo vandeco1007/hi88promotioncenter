@@ -1,5 +1,6 @@
 const axios = require('axios');
 module.exports = (authorization)=>{
+    console.log(authorization)
     var config = {
       method: 'get',
       url: 'https://boapi.hi88admin.com/sandsv-ims/api/v1/players/'+playerId,
