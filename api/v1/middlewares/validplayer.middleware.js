@@ -1,6 +1,5 @@
 const axios = require('axios');
 module.exports = (authorization)=>{
-  console.log("hello")
     var config = {
       method: 'get',
       url: 'https://boapi.hi88admin.com/sandsv-ims/api/v1/players/'+playerId,
@@ -12,6 +11,7 @@ module.exports = (authorization)=>{
     console.log(config.url)
     return axios(config)
     .then(function (response) {
+      console.log("hello")
       if(response.data.vipid!="ee4c391a-49f1-481d-89c6-98bc508501e1"){
           var config = {
               method: 'get',
