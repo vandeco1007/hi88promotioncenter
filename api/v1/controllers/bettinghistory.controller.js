@@ -57,37 +57,33 @@ module.exports = {
                 console.log(eval(promoInfo.avoidMethod))
                 let validDate = promoInfo.date.indexOf(date.date)!=-1
                 if(validDate==true){
-                  if(checkResult[0]==false){
-                    let conditionValue = promoInfo.conditionValue
-                    eval(promoInfo.condition)
-                    console.log(finalize[0])
-                    var condifunction = conditionValue.indexOf(finalize[0])
-                    console.log(condifunction)
-                    if(condifunction!=-1){
-                      let bonus = promoInfo.bonus[condifunction]
-                      let calculateMethod = eval(promoInfo.calculateMethod)
-                      let score = Math.round(calculateMethod * 100) / 100
-                      console.log(score)
-                      console.log("this is the score: "+score)
-                      let limit
-                      eval(promoInfo.limit)
-                      let limitResult = limit(result)
-                      console.log(limitResult)
-                      console.log("limit: "+limitResult)
-                      if(score!=''){
-                        if(score<=limitResult-1){
-                          console.log("final score: "+score)
-                          success(res,result,score,promoInfo,calculateValue,startTime,endTime)
-                        }else{
-                          score = limitResult
-                          console.log("final score: "+score)
-                          success(res,result,score,promoInfo,calculateValue,startTime,endTime)
-                        }
+                  let conditionValue = promoInfo.conditionValue
+                  eval(promoInfo.condition)
+                  console.log(finalize[0])
+                  var condifunction = conditionValue.indexOf(finalize[0])
+                  console.log(condifunction)
+                  if(condifunction!=-1){
+                    let bonus = promoInfo.bonus[condifunction]
+                    let calculateMethod = eval(promoInfo.calculateMethod)
+                    let score = Math.round(calculateMethod * 100) / 100
+                    console.log(score)
+                    console.log("this is the score: "+score)
+                    let limit
+                    eval(promoInfo.limit)
+                    let limitResult = limit(result)
+                    console.log(limitResult)
+                    console.log("limit: "+limitResult)
+                    if(score!=''){
+                      if(score<=limitResult-1){
+                        console.log("final score: "+score)
+                        success(res,result,score,promoInfo,calculateValue,startTime,endTime)
                       }else{
-                        failure(res,200,"Quý khách chưa đủ điều kiện nhận khuyên mãi")
+                        score = limitResult
+                        console.log("final score: "+score)
+                        success(res,result,score,promoInfo,calculateValue,startTime,endTime)
                       }
                     }else{
-                      failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
+                      failure(res,200,"Quý khách chưa đủ điều kiện nhận khuyên mãi")
                     }
                   }else{
                     failure(res,200,'Quý khách chưa đủ điều kiện nhận khuyên mãi')
