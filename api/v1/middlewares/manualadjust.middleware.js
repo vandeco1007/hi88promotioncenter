@@ -17,8 +17,8 @@ module.exports = (starttime,endtime,checkValue,checkResult,playerid,authorizatio
         });
         return response.data
     }).then(()=>{
-        if(testcase.includes("KC200") || testcase.includes("FR200")){
-            if(checkValue=="KC200" || checkValue=="FR200"){
+        if(testcase.includes("CODE188") || testcase.includes("CODE200")){
+            if(checkValue=="CODE188" || checkValue=="CODE200"){
                 checkResult[0] = true
             }else{
                 checkResult[0] =  testcase.includes(checkValue)
