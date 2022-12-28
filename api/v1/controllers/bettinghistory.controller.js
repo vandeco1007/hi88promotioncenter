@@ -47,7 +47,8 @@ module.exports = {
         let valideplayerCheck = await validplayer(result.data[0].playerid,authorization)
         console.log(valideplayerCheck)
         if(valideplayerCheck=="valid"){
-          if(checkResult[0]==false){
+          if(checkResult[0]){
+            console.log(calculateValue)
             if(calculateValue!=null){
               let avoidMethod = eval(promoInfo.avoidMethod)
               console.log(avoidMethod)
