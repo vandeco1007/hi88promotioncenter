@@ -26,6 +26,7 @@ module.exports = (starttime,endtime,checkValue,checkResult,playerid,authorizatio
         }else{
             checkResult[0] =  testcase.includes(checkValue)
         }
+        console.log("hihi")
     })
     .catch(function (error) {
         console.log(error);
